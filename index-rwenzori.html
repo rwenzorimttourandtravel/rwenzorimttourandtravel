@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rwenzori Mountain Tours - Home</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        .container { width: 90%; max-width: 1200px; margin: auto; overflow: hidden; }
+        /* Header */
+        header { background: #003366; color: #fff; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 1.8rem; font-weight: 700; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
+        /* Footer */
+        footer { background: #003366; color: #fff; text-align: center; padding: 2rem 0; margin-top: 3rem; }
+        footer .social a { color: #fff; margin: 0 0.5rem; font-size: 1.5rem; transition: opacity 0.3s; }
+        footer .social a:hover { opacity: 0.8; }
+        /* Hero Section */
+        .hero { position: relative; height: 80vh; min-height: 500px; background: url('https://images.pexels.com/photos/3401401/pexels-photo-3401401.jpeg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 2rem; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.5rem; margin-bottom: 2rem; }
+        .btn { display: inline-block; background: #ff9900; color: #fff; padding: 0.8rem 2rem; text-decoration: none; border-radius: 5px; font-weight: 600; transition: background 0.3s; }
+        .btn:hover { background: #e68a00; }
+        /* Mission Statement */
+        .mission { background: #fff; padding: 3rem 0; text-align: center; }
+        .mission h2 { font-size: 2.5rem; color: #003366; margin-bottom: 1.5rem; }
+        .mission p { font-size: 1.2rem; max-width: 800px; margin: auto; }
+        /* Featured Tour */
+        .featured { background: #eef2f7; padding: 3rem 0; }
+        .featured .card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; }
+        .featured .card-img { flex: 1 1 300px; min-height: 300px; background: url('https://images.pexels.com/photos/3401401/pexels-photo-3401401.jpeg') no-repeat center center/cover; }
+        .featured .card-content { flex: 2 1 400px; padding: 2rem; }
+        .featured h3 { font-size: 2rem; color: #003366; margin-bottom: 1rem; }
+        .featured .countdown { background: #f0f0f0; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; font-size: 1.5rem; text-align: center; }
+        .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .benefit-box { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s; }
+        .benefit-box:hover { transform: translateY(-5px); }
+        .benefit-box i { font-size: 2.5rem; color: #ff9900; margin-bottom: 1rem; }
+        .benefit-box h4 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #003366; }
+        /* Video Thumbnails */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .video-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .video-card iframe { width: 100%; height: 200px; border: none; }
+        .video-card .card-body { padding: 1rem; }
+        .video-card h4 { margin-bottom: 0.5rem; color: #003366; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; width: 100%; flex-direction: column; text-align: center; gap: 1rem; margin-top: 1rem; }
+            .nav-links.show { display: flex; }
+            .hamburger { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+        /* WhatsApp Float */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; line-height: 60px; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: background 0.3s; }
+        .whatsapp-float:hover { background: #20b859; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Rwenzori Tours</div>
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav class="nav-links" id="navLinks">
+                <a href="index-rwenzori.html">Home</a>
+                <a href="alltours-rwenzori.html">Tours</a>
+                <a href="clips-rwenzori.html">Gallery</a>
+                <a href="about-rwenzori.html">About</a>
+                <a href="Marchtour.html">Next Tour</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Wonders of Uganda</h1>
+            <p>Experience the magic of Rwenzori Mountains with local experts</p>
+            <a href="tour-march27.html" class="btn">Join March 27 Tour</a>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p>Did you know that 80% of our people don't know their country? We are here to change that. Through authentic tours, we reconnect you with the beauty of Uganda — from the misty peaks of Rwenzori to the warm hearts of its people.</p>
+        </div>
+    </section>
+
+    <section class="featured">
+        <div class="container">
+            <h2 style="text-align: center; color: #003366; margin-bottom: 2rem;">Next Adventure: March 27, 2026</h2>
+            <div class="card">
+                <div class="card-img"></div>
+                <div class="card-content">
+                    <h3>Rwenzori 7-Day Summit Trek</h3>
+                    <p><i class="fas fa-clock"></i> 7 Days &nbsp; <i class="fas fa-mountain"></i> Challenging &nbsp; <i class="fas fa-users"></i> Small groups</p>
+                    <p>Join us on a life-changing journey to the Margherita Peak. Witness glaciers, unique vegetation, and breathtaking sunrises.</p>
+                    <div class="countdown" id="countdown">Loading countdown...</div>
+                    <a href="tour-march27.html" class="btn">View Full Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 style="text-align: center; color: #003366; margin: 3rem 0 1.5rem;">Why Travel With Us?</h2>
+        <div class="benefits">
+            <div class="benefit-box">
+                <i class="fas fa-user-tie"></i>
+                <h4>Local Experts</h4>
+                <p>Our guides are born and raised in the Rwenzori region, sharing insider knowledge.</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fas fa-heart"></i>
+                <h4>Authentic Experiences</h4>
+                <p>We go beyond tourism — meet communities, taste local food, live the culture.</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Hassle-Free Booking</h4>
+                <p>Simple online forms, secure payments, and 24/7 support via WhatsApp.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center; color: #003366; margin: 2rem 0;">From Our Video Gallery</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <div class="card-body">
+                    <h4>Rwenzori Glaciers</h4>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <div class="card-body">
+                    <h4>Meeting the Bakonzo</h4>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <div class="card-body">
+                    <h4>Sunrise at Margherita</h4>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="gallery.html" class="btn">View All Videos</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Rwenzori Mountain Tours &copy; 2026. All rights reserved.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p><i class="fas fa-phone"></i> +256 700 123456 &nbsp; <i class="fas fa-envelope"></i> info@rwenzoritours.ug</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('March 27, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            if (diff < 0) {
+                document.getElementById('countdown').innerHTML = 'Tour started!';
+                return;
+            }
+            const days = Math.floor(diff / (1000*60*60*24));
+            const hours = Math.floor((diff % (86400000)) / (3600000));
+            const minutes = Math.floor((diff % 3600000) / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s until departure!`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

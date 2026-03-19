@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Rwenzori Mountain Tours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same base styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        .container { width: 90%; max-width: 1200px; margin: auto; overflow: hidden; }
+        header { background: #003366; color: #fff; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 1.8rem; font-weight: 700; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
+        footer { background: #003366; color: #fff; text-align: center; padding: 2rem 0; margin-top: 3rem; }
+        footer .social a { color: #fff; margin: 0 0.5rem; font-size: 1.5rem; transition: opacity 0.3s; }
+        footer .social a:hover { opacity: 0.8; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; line-height: 60px; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: background 0.3s; }
+        .whatsapp-float:hover { background: #20b859; }
+        .about-header { background: #003366; color: #fff; padding: 3rem 0; text-align: center; }
+        .about-content { background: #fff; padding: 3rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin: 3rem 0; }
+        .about-content p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .team-member { text-align: center; }
+        .team-member img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; width: 100%; flex-direction: column; text-align: center; gap: 1rem; margin-top: 1rem; }
+            .nav-links.show { display: flex; }
+            .hamburger { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Rwenzori Tours</div>
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav class="nav-links" id="navLinks">
+                <a href="index-rwenzori.html">Home</a>
+                <a href="alltours-rwenzori.html">Tours</a>
+                <a href="clips-rwenzori.html">Gallery</a>
+                <a href="about-rwenzori.html">About</a>
+                <a href="Marchtour.html">Next Tour</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-header">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Your trusted partner for Rwenzori adventures</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="about-content">
+            <h2 style="color: #003366;">Our Story</h2>
+            <p>Founded by local guides who grew up in the shadow of the Mountains of the Moon, Rwenzori Mountain Tours was born from a simple belief: that every Ugandan deserves to know the wonders of their own country. We started with a few friends and a passion for trekking, and today we've helped hundreds discover the magic of the Rwenzori.</p>
+            <p>Our mission is to create unforgettable, authentic experiences that connect travelers with nature and culture, while supporting local communities and preserving the environment.</p>
+            
+            <h2 style="color: #003366; margin-top: 2rem;">Meet the Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="John">
+                    <h4>John K. Muhindo</h4>
+                    <p>Founder & Lead Guide</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Sarah">
+                    <h4>Sarah Masika</h4>
+                    <p>Operations Manager</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="David">
+                    <h4>David Bwambale</h4>
+                    <p>Senior Trek Guide</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Rwenzori Mountain Tours &copy; 2026. All rights reserved.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p><i class="fas fa-phone"></i> +256 700 123456 &nbsp; <i class="fas fa-envelope"></i> info@rwenzoritours.ug</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
